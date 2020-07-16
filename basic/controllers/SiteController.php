@@ -67,6 +67,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
+//        var_dump(">>>>>>>>>>");
         return $this->render('index');
     }
 
@@ -77,16 +78,19 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
+//        var_dump(">>>>>>>>>>");
+//        var_dump(Yii::$app->db);
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+//            return $this->goBack();
+            $this->redirect(array('/site/index'));
         }
 
-        $model->password = '';
+//        $model->password = '';
         return $this->render('login', [
             'model' => $model,
         ]);
@@ -99,9 +103,15 @@ class SiteController extends Controller
      */
     public function actionLogout()
     {
-        Yii::$app->user->logout();
+//        Yii::$app->user->logout();
+//
+//        return $this->goHome();
+        $session = \Yii::$app->session;
+        $session->remove('userInfo');
+        \Yii::$app->user->logout();// 把当前用户退出Yii::$app->user
 
-        return $this->goHome();
+
+        $this->redirect('index');
     }
 
     /**

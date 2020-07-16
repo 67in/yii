@@ -37,19 +37,11 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-left'],
         'items' => [
-            ['label' => '博客', 'url' => ['/sites/extra/add']],
-            ['label' => '学院', 'url' => ['/sites/extra/hot']],
-            ['label' => '下载', 'url' => ['/sites/monitor']],
-            ['label' => '论坛', 'url' => ['/sites/extra/hour']],
-            ['label' => '问答', 'url' => ['/sites/extra/rival']],
-            ['label' => '直播', 'url' => ['/sites/extra/app']],
-            ['label' => '↓',  'items' => [
-                ['label' => '招聘', 'url' => ['/sites/extra']],
-                ['label' => 'VIP会员', 'url' => ['/sites/keyword']],
-            ]
-            ],
-
-
+            ['label' => '首页', 'url' => ['/sites/extra/add']],
+            ['label' => '资源', 'url' => ['/sites/extra/hot']],
+            ['label' => '图书资料', 'url' => ['/sites/monitor']],
+            ['label' => '图书借阅', 'url' => ['/sites/extra/hour']],
+            ['label' => '咨询', 'url' => ['/sites/extra/rival']],
         ]
     ]);
     echo Nav::widget([
@@ -60,7 +52,7 @@ AppAsset::register($this);
             Yii::$app->user->isGuest ?
                 ['label' => '登录', 'url' => ['/site/login']] :
                 [
-                    'label' =>  Yii::$app->user->identity->realname .'(退出)',
+                    'label' =>  Yii::$app->user->identity->username .'(退出)',
                     'url' => ['/site/logout'],
                     'linkOptions' => ['data-method' => 'post']
                 ],

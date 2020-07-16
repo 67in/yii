@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => '67in Blog',
+    'name' => '图书管理系统',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
